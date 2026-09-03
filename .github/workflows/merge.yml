@@ -1,14 +1,18 @@
 name: Automatic application merge
 
-on: 
+on:
   issue_comment:
     types:
       - created
+
+permissions: {}
 
 jobs:
   merge:
     runs-on: ubuntu-latest
     container:
+      # This image is built by this repository. GHCR does not expose its digest
+      # anonymously here, so keep the existing tag until a verified digest is available.
       image: ghcr.io/flathub/actions/merge:latest
     steps:
       - run: /entrypoint.py

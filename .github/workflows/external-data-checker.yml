@@ -3,11 +3,16 @@ on:
   schedule:
     - cron: '0 * * * *'
 
+permissions:
+  contents: read
+
 jobs:
   flathub-data-checker-global:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@a37ce9120846195fa4ece8f58b268e6043cb2f26 # v3
+      with:
+        persist-credentials: false
 
     - uses: ./.github/actions/flatpak-external-data-checker
       env:

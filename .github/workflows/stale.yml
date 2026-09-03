@@ -3,13 +3,15 @@ on:
   schedule:
   - cron: "0 0 * * *"
 
+permissions: {}
+
 jobs:
   stale:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/stale@v1
+    - uses: actions/stale@0649bd81195b7ac109fbf9dde113af7e58a78b8e # v1
       with:
-        repo-token:  ${{ secrets.FLATHUBBOT_TOKEN }}
+        repo-token: ${{ secrets.FLATHUBBOT_TOKEN }}
         stale-pr-message: "This PR hasn't received any updates in a year and will be automatically closed in 14 days. Feel free to re-open it if you plan to continue working on that pull request or think it deserves attention from Flathub admins"
         days-before-stale: 365
         days-before-close: 14
